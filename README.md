@@ -34,5 +34,8 @@ To push the current branch and set the remote as upstream, use
 I re-attempted by typing ‘git push origin master’ which remedied the problem.
 
 UPDATE: After pushing, I edited my course_101/.git/config file by typing “git push -u origin master” so that my master branch was set to track the remote master branch. This was equivalent to editing the config file and typing [branch “master”] and then typing remote = origin below that.
+
 /End Log
-_________________________________________-
+_________________________________________
+5/4/2017 @ 4:37PM EST
+Created lesson_5 directory
