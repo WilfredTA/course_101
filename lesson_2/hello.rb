@@ -1,0 +1,1 @@
+Kernel.print("Hello world")

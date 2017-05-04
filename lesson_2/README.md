@@ -1,0 +1,1 @@
+This is a list of exercises for Course 101 of Launch School, Lesson 2
