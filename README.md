@@ -40,3 +40,8 @@ _________________________________________
 5/7/2017 @ 9:38PM EST
 Created lesson_5 directory in Cloud 9. Will git add, git commit, and git push 
 upon completing this log.
+
+_________________________
+5/8/2017 @ 9:22AM 
+Completed all exercises (exercise 16 unsuccessful so far). Adding, committing, and 
+pushing to GitHub for a code review of exercise 16
