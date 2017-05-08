@@ -37,5 +37,6 @@ UPDATE: After pushing, I edited my course_101/.git/config file by typing “git 
 
 /End Log
 _________________________________________
-5/4/2017 @ 4:37PM EST
-Created lesson_5 directory
+5/7/2017 @ 9:38PM EST
+Created lesson_5 directory in Cloud 9. Will git add, git commit, and git push 
+upon completing this log.
