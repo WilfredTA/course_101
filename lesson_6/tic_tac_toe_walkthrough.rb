@@ -1,0 +1,15 @@
+# Set up and display the board
+
+ puts ""
+ puts "		|	  | 	"
+ puts "		|	  | 	"
+ puts "		|	  | 	"
+ puts "-----+-----+-----"
+ puts "		|	  | 	"
+ puts "		|	  | 	"
+ puts "		|	  | 	"
+ puts "-----+-----+-----"
+ puts "		|	  | 	"
+ puts "		|	  | 	"
+ puts "		|	  | 	"
+ puts ""
