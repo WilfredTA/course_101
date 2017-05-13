@@ -6,8 +6,8 @@
 # 2.5 Make sure the method only performs one task
 # 3. Array#sample returns nil on an empty array.
 # 4. If x is nil, array[x] is not nil. This is because x represents an index,
-#   not an element, and nil can never be an index.
-# 5. The return value of this is neither nil nor false: it is simply error.
+#   not an element, and nil can never be an index... [] is akin to a method requiring valid input
+# 5. The return value of this is neither nil nor false: it is simply error due to invalid input.
 
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
