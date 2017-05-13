@@ -1,5 +1,8 @@
-# Set up and display the board
-
+# Take-aways from building this program: 
+# 1. If object type errors come up when testing code, ask yourself if the code is returning the intended value
+# 2. When writing a method, it is useful to write the pseudo-code of that method... Include what you want it to return
+# 2.5 Make sure the method only performs one task
+# Array#sample returns nil on an empty array. Be
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
@@ -58,9 +61,32 @@ def player_move!(brd)
     brd[square] = PLAYER_MARKER
 end 
 
+def computer_move!(brd)
+        square = empty_squares(brd).sample 
+    if (brd[square] = COMPUTER_MARKER) == nil
+        []
+    else
+        brd[square] = COMPUTER_MARKER 
+    end
+end
+
+def board_full?(brd)
+    empty_squares(brd) == []
+end
+
+def winner?(brd)
+    false
+end
+
 board = initialize_board
 display_board(board)
 
+loop do
 player_move!(board)
-puts board.inspect
+computer_move!(board)
+display_board(board)
+
+break if winner?(board) || board_full?(board)
+end
+
 display_board(board)
