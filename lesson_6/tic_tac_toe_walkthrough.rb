@@ -63,7 +63,7 @@ end
 
 def computer_move!(brd)
         square = empty_squares(brd).sample 
-    if (brd[square] = COMPUTER_MARKER) == nil
+    if square == nil
         []
     else
         brd[square] = COMPUTER_MARKER 
