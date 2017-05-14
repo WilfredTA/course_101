@@ -36,14 +36,20 @@ def joinor(array, diction, punctuation)
     array.join("#{punctuation}")
   end
 end
-  
-
-def score_keeper(player, computer)
-end
 
 def dangerous_square?(brd)
   # If player has 2 out of the 3 squares in any sub array of WINNING_LINES, 
   # return the square that the player doesn't have
+
+  brd.each do |arr|
+    if arr.count("X") == 2
+      return arr.index(" ")
+    else 
+      return nil
+    end
+  end
+
+
 end
 
 def opportune_square?(brd)
@@ -109,7 +115,13 @@ def player_move!(brd)
 end
 
 def computer_move!(brd)
-  square = empty_squares(brd).sample
+
+  if dangerous_square?(brd)
+    dangerous_square(brd) == COMPUTER_MARKER
+  else
+    square = empty_squares(brd).sample 
+  end
+  
   if square == nil
     []
   else
@@ -144,6 +156,8 @@ def detect_winner(brd)
   nil
 end
 
+player_score = 0
+computer_score = 0
 loop do
   board = initialize_board
   display_board(board)
@@ -163,6 +177,15 @@ loop do
   else
     prompt "It's a tie!"
   end
+
+  if detect_winner(board) == 'Player'
+    player_score += 1
+  elsif detect_winner(board) == 'Computer'
+    computer_score += 1
+  else
+  end
+
+  break if computer_score == 2 || player_score == 2
 
   prompt "Play again? (y or n)"
   answer = gets.chomp
