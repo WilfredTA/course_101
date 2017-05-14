@@ -8,6 +8,7 @@
 # 4. If x is nil, array[x] is not nil. This is because x represents an index,
 #   not an element, and nil can never be an index... [] is akin to a method requiring valid input
 # 5. The return value of this is neither nil nor false: it is simply error due to invalid input.
+# 6. arr[]= is destructive
 
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
@@ -17,12 +18,25 @@ WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
                   [[1, 5, 9], [3, 5, 7]] # diagonals
 
 
-def joinor(brd, x, y)
+def joinor(array, diction, punctuation)
   # Input is board array plus two args
   # Lists elements of array
   # First arg is between each element
   # Second arg is before last element
+  # Board will not be passed into this method: empty_squares(brd) will
+  # be passed in as the first arg, because empty_squares(brd) is the array of 
+  # options that we want to display
+  
+  case array.size 
+  when 0 then ''
+  when 1 then array.first
+  when 2 then array.join("#{diction}")
+  else 
+    array[-1] = "#{diction} #{array.last}" # Changes the last element to be the word plus the element
+    array.join("#{punctuation}")
+  end
 end
+  
 
 def score_keeper(player, computer)
 end
@@ -85,7 +99,7 @@ end
 def player_move!(brd)
   square = ''
   loop do
-    prompt "Choose a square (#{empty_squares(brd).join(',')}):"
+    prompt "Choose a square (#{joinor(empty_squares(brd), 'or ', ', ')}):"
     square = gets.chomp.to_i
     break if empty_squares(brd).include?(square)
     prompt "Sorry, that's not a valid choice."
