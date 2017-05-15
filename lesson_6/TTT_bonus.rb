@@ -38,18 +38,20 @@ def joinor(array, diction, punctuation)
 end
 
 def dangerous_square?(brd)
-  # If player has 2 out of the 3 squares in any sub array of WINNING_LINES, 
-  # return the square that the player doesn't have
-
-  brd.each do |arr|
-    if arr.count("X") == 2
-      return arr.index(" ")
-    else 
-      return nil
-    end
-  end
-
-
+ dangerous_squares = []
+ 
+ WINNING_LINES.each do |line|
+   counter = 0
+   line.each do |square|
+     if brd[square] == PLAYER_MARKER 
+       counter += 1
+     end
+     if counter == 2
+       dangerous_squares << brd.index(square)
+     end
+   end
+ end
+ dangerous_squares.first
 end
 
 def opportune_square?(brd)
@@ -115,17 +117,15 @@ def player_move!(brd)
 end
 
 def computer_move!(brd)
-
   if dangerous_square?(brd)
-    dangerous_square(brd) == COMPUTER_MARKER
+    brd[dangerous_square?(brd)] == COMPUTER_MARKER
   else
-    square = empty_squares(brd).sample 
-  end
-  
-  if square == nil
-    []
-  else
-    brd[square] = COMPUTER_MARKER
+    square = empty_squares(brd).sample
+      if square == nil
+       []
+      else
+       brd[square] = COMPUTER_MARKER
+      end
   end
 end
 
