@@ -38,17 +38,13 @@ def joinor(array, diction, punctuation)
 end
 
  
-def dangerous_square?(brd)
-dangerous_lines = WINNING_LINES.select do |line|
-   (brd[line[0]] == PLAYER_MARKER && brd[line[1]] == PLAYER_MARKER) ||
-   (brd[line[0]] == PLAYER_MARKER && brd[line[2]] == PLAYER_MARKER) ||
-   (brd[line[1]] == PLAYER_MARKER && brd[line[2]] == PLAYER_MARKER)
- end
- if dangerous_lines[0].first == nil
-   []
- else
-   dangerous_lines[0].first
- end
+def dangerous_square?(brd, line)
+  if brd.at(*line).count('X') == 2
+    brd.select{|square| line.include?(square) && square == ' '}
+  else
+    nil
+  end
+  
 end
 
 def opportune_square?(brd)
@@ -114,7 +110,17 @@ def player_move!(brd)
 end
 
 def computer_move!(brd)
-   brd[dangerous_square?(brd)] == COMPUTER_MARKER
+   square = ' '
+   WINNING_LINES.each do |line|
+     square = dangerous_square?(brd, line)
+     break if square 
+   end
+   
+   if square == nil
+     square = empty_squares(brd).sample
+   end
+   
+   brd[square] = COMPUTER_MARKER
 end
 
 def board_full?(brd)
