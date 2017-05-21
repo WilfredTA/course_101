@@ -71,7 +71,7 @@ end
 
 def computer_move!(brd)
   square = empty_squares(brd).sample
-  if square == nil
+  if square.nil?
     []
   else
     brd[square] = COMPUTER_MARKER
@@ -83,8 +83,9 @@ def board_full?(brd)
 end
 
 def winner?(brd)
-  !!detect_winner(brd) # !! will return true for any string (since strings are truthy)
-                       # and false on nil (since nil is not truthy)
+  !!detect_winner(brd)
+  # !! will return true for any string (since strings are truthy)
+  # and false on nil (since nil is not truthy)
 end
 
 def detect_winner(brd)
@@ -101,7 +102,7 @@ def detect_winner(brd)
     elsif brd[array[0]] == COMPUTER_MARKER &&
           brd[array[1]] == COMPUTER_MARKER &&
           brd[array[2]] == COMPUTER_MARKER
-           return 'Computer'
+      return 'Computer'
     end
   end
   nil
